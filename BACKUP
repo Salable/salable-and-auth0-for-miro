@@ -1,0 +1,69 @@
+import React, {useEffect, useState} from "react";
+import { useAuth0 } from "@auth0/auth0-react"; 
+const MiroInit = () => {  
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    console.log(`Loaded app`)   
+    InitSideBar()
+  }, []);
+
+  async function InitSideBar() {
+    // Listen for a click on your app icon and open /app when clicked
+    await window.miro.board.ui.on('icon:click', async () => {
+      await window.miro.board.ui.openModal({
+        url: '/',
+        width: 800,
+        height: 600,
+        fullscreen: false,
+      });
+    });
+  }
+  
+  const GetTokenAndRegister = async (getAccessTokenSilently) => {
+      // Get access token from Auth0
+      const access_token = await getAccessTokenSilently();
+      // Get Miro information (board, user)
+      const userInfo = await window.miro.board.getUserInfo()
+      const boardInfo = await window.miro.board.getInfo()
+      // Register this with our analytics synchronous netlify function
+      fetch("/.netlify/functions/analytics", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${access_token}`, 
+          contentType: "application/json"
+        },
+        body: JSON.stringify({
+          source: window.location,
+          userInfo: userInfo, 
+          boardInfo: boardInfo
+        }),
+      })
+      .then(res => {
+        return res.json()
+      }).then(json => {
+        console.log(json)
+      }).catch(err => {
+        console.log(err)
+      })
+  }
+  
+  const InitMiroSDK = () => {
+    const { isLoading, isAuthenticated, getAccessTokenSilently} = useAuth0();
+    if (isLoading) {
+      return <></>;
+    }
+    if (isAuthenticated && !isLoading && !loaded) { 
+      setLoaded(true)
+      GetTokenAndRegister(getAccessTokenSilently)          
+      return <></>
+    }
+  };
+  
+  return (
+    <>
+      {InitMiroSDK()}
+    </>
+  );
+};
+
+export default MiroInit;
