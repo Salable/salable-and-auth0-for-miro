@@ -17,36 +17,40 @@ const Home = () => {
 
   const licenseCheckFunction = async (email) => {
     let hasLicenses = await getLicence(email)
+    console.log(`User ${email} has licenses:`) 
+    console.dir(hasLicenses)
     if (hasLicenses) {
-      let result = await getLicensesForPurchaser(email)
-      callSalablePricingTable()
+      let result = await getLicensesForPurchaser(email)      
       console.dir(result)
-    }    
+    } else {
+      callSalablePricingTable(email)
+    }
   }
 
   // useOnceCall(async () => {
     
   // })
 
-  const callSalablePricingTable = async () => {
+  const callSalablePricingTable = async (email) => {
     const Salable = window.Salable
     console.dir(Salable)
+    document.querySelector('.salable-pricing-table-container')?.remove();
     const salable = new Salable(
       {
         pricingTableNode: document.querySelector('#pricing-table'),
         productUuid: '5108c23c-efe4-40f7-9043-0caed0b3cbd4',
         apiKey: 'qInsLxVYeT6GOPaNq2qAR4rFW1ZrBuVS9uHJIjUH',
         globalPlanOptions: {
-          granteeId: 'example-grantee-id-123',
-          successUrl: 'https://example.com/success',
-          cancelUrl: 'https://example.com/cancel',
-          contactUsLink: 'https://example.com/contact'
+          granteeId: email,
+          successUrl: 'https://8888-nealriley-salableandaut-k43j1qque5d.ws-eu59.gitpod.io/',
+          cancelUrl: 'https://8888-nealriley-salableandaut-k43j1qque5d.ws-eu59.gitpod.io/',
+          contactUsLink: 'https://8888-nealriley-salableandaut-k43j1qque5d.ws-eu59.gitpod.io/'
         }
       },
       {
-        member: 'example-member-123',
+        member: email,
         customer: {
-          email: "person@company.com"
+          email: email
         }
       }
     );

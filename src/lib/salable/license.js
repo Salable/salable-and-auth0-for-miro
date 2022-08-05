@@ -1,7 +1,7 @@
-const getLicence = async () => {
+const getLicence = async (email) => {
     // const user = await miro.board.getUserInfo();
     const productUuid = "5108c23c-efe4-40f7-9043-0caed0b3cbd4"
-    const url = `https://api.salable.org/licenses/check?productUuid=${productUuid}&granteeIds=[1234567]`
+    const url = `https://api.salable.org/licenses/check?productUuid=${productUuid}&granteeIds=[${email}]`
     try {
         const response = await fetch(url, {
             method: 'GET',
