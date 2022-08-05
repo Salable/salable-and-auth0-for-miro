@@ -16,11 +16,12 @@ const storeLicenseDetails = async (email) => {
 const App = () => {
   const { user, isLoading, isAuthenticated } = useAuth0();
   const [email, setEmail] = useState(null);
-  const [capabilities, setCapabilities] = useState([]);
+  const [capabilities, setCapabilities] = useState(null);
   useEffect(() => {
     if (user) {
       storeLicenseDetails(user.email).then((result) => {
         if (result && result.capabilities !== null) setCapabilities(result.capabilities)
+        else setCapabilities([])
       })
       setEmail(user.email)
     }

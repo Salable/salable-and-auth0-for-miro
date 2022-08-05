@@ -2,10 +2,22 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react"; 
 
 
-export const BuyNow = () => {  
-
+export const BuyNow = () => { 
+  const {user} = useAuth0(); 
+  function useOnceCall(cb, condition = true) {
+    const isCalledRef = React.useRef(false);
+  
+    React.useEffect(() => {
+      if (condition && !isCalledRef.current) {
+        isCalledRef.current = true;
+        cb();
+      }
+    }, [cb, condition]);
+}
+    useOnceCall(async () => {
+      CallSalablePricingTable()  
+    })
     const CallSalablePricingTable = async () => {
-        const {user} = useAuth0();
         const email = user.email
         const Salable = window.Salable
         document.querySelector('.salable-pricing-table-container')?.remove();
@@ -34,15 +46,14 @@ export const BuyNow = () => {
           return <></>
         }        
         return <></>
-      }  
-      CallSalablePricingTable()    
+    }     
   return (
     <>  
       <div>
         <h1>Choose your plan</h1>
       </div>
       <div id="pricing-table">
-      </div>      
+      </div>            
     </>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react"; 
 import {BuyNow} from "../components/buyNow"
+import { SaaSProduct } from "./app";
 
 
 const Home = (props) => {  
@@ -10,15 +11,18 @@ const Home = (props) => {
 const RenderHomeContent = () => {
   if (props.isLoading) {
     return <></>;
-  }
-
-  if (!props.isLoading && props.isAuthenticated) {          
-    if (props.capabilities.length > 0) {
-      return<>    
-      Welcome to the product!
-     </>
+  }  
+  else if (!props.isLoading && props.isAuthenticated) {  
+    console.log(props.capabilities)        
+    if (props.capabilities === null) return <></>
+    else if (props.capabilities.length > 0) {
+      return <div>
+        <h3>Your Inspirational Content</h3>
+        <SaaSProduct/>
+      </div>
+     
     }
-    else return <><BuyNow/></>
+    else return <BuyNow/>
     
   }
   return <>
@@ -38,10 +42,11 @@ const RenderHomeContent = () => {
   </>
 };
   return (
-    <>    
+    <>   
       <div>
       {RenderHomeContent()}
       </div>
+      <hr/>
       <div>
       {props.email} has the right to use the following capabilities: {props.capabilities}
       </div>
