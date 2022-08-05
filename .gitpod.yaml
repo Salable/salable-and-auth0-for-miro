@@ -1,6 +1,6 @@
 image:
-  file: Dockerfile
+  file: .gitpod.Dockerfile
 tasks:
   - name: Install NPM modules for all completed step folders
-    init: npm i
+    init: npm i --location=global netlify-cli
     

@@ -3,7 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import {BuyNow} from "../components/buyNow"
 
 
-const Home = (props) => {  
+const MiroApp = (props) => {  
   const { loginWithPopup } = useAuth0();
 
 
@@ -12,8 +12,9 @@ const RenderHomeContent = () => {
     return <></>;
   }
 
-  if (!props.isLoading && props.isAuthenticated) {          
-    if (props.capabilities.length > 0) {
+  if (!props.isLoading && props.isAuthenticated && props.capabilities) {          
+    
+    if (props.capabilities.includes("idea-generator-miro")) {
       return<>    
       Welcome to the product!
      </>
@@ -50,4 +51,4 @@ const RenderHomeContent = () => {
   );
 };
 
-export default Home;
+export default MiroApp;
