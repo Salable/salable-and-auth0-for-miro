@@ -4,25 +4,23 @@ import {BuyNow} from "../components/buyNow"
 import { SaaSProduct } from "./app";
 
 
-const Home = (props) => {  
+const MiroApp = (props) => {  
   const { loginWithPopup } = useAuth0();
 
 
 const RenderHomeContent = () => {
   if (props.isLoading) {
     return <></>;
-  }  
-  else if (!props.isLoading && props.isAuthenticated) {  
-    console.log(props.capabilities)        
-    if (props.capabilities === null) return <></>
-    else if (props.capabilities.length > 0) {
-      return <div>
-        <h3>Your Inspirational Content</h3>
-        <SaaSProduct/>
-      </div>
-     
+  }
+  if (props.capabilities === null) return <></>
+  else if (!props.isLoading && props.isAuthenticated && props.capabilities !== null) {          
+    
+    if (props.capabilities.includes("idea-generator-miro")) {
+      return<>    
+        <SaaSProduct />
+     </>
     }
-    else return <BuyNow/>
+    else return <><BuyNow/></>
     
   }
   return <>
@@ -42,11 +40,11 @@ const RenderHomeContent = () => {
   </>
 };
   return (
-    <>   
+    <>    
       <div>
       {RenderHomeContent()}
       </div>
-      <hr/>
+      <hr />
       <div>
       {props.email} has the right to use the following capabilities: {props.capabilities}
       </div>
@@ -55,4 +53,4 @@ const RenderHomeContent = () => {
   );
 };
 
-export default Home;
+export default MiroApp;

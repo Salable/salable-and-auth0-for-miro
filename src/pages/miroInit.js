@@ -43,7 +43,7 @@ const MiroInit = () => {
   
    await window.miro.board.ui.on('icon:click', async () => {
       await window.miro.board.ui.openModal({
-        url: '/',
+        url: '/miro-app',
         width: 800,
         height: 600,
         fullscreen: false,
