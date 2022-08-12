@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react"; 
-import {BuyNow} from "../components/buyNow"
-import { SaaSProduct } from "./app";
+import {BuyNow} from "../../components/buyNow"
+import { SaaSProduct } from "../../components/app";
 
 
 const Home = (props) => {  
@@ -17,17 +17,23 @@ const RenderHomeContent = () => {
     if (props.capabilities === null) return <></>
     else if (props.capabilities.length > 0) {
       return <div>
-        <h3>Your Inspirational Content</h3>
+        <h3>Start your Pomato Timer</h3>
         <SaaSProduct/>
       </div>
      
     }
-    else return <BuyNow/>
+    else return <>
+    <h2>Pomato to the Rescue!</h2>
+    <div>
+      Pommodoro timers are really useful! They can help you stay focused and keep you on task. With Pomato you can keep focused when you're online, and even when you're using your favorite products like Trello and Miro! Get started using Pomoto today, and check out the offers below.
+    </div>
+    <BuyNow/>
+    </>
     
   }
   return <>
     <div>
-      <h1>Welcome to Idea Generator!</h1>
+      <h1>Pomato - Your Pommodoro Timer </h1>
       <p>Use this product to generate ideas!</p>
       <hr></hr>
       <h3>Get started</h3> 
@@ -47,8 +53,8 @@ const RenderHomeContent = () => {
       {RenderHomeContent()}
       </div>
       <hr/>
-      <div>
-      {props.email} has the right to use the following capabilities: {props.capabilities}
+      <div className="info">
+      {props.email ? props.email : "Anonymous"} has the right to use the following capabilities: {props.capabilities}
       </div>
 
     </>

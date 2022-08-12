@@ -50,7 +50,7 @@ export const BuyNow = () => {
   return (
     <>  
       <div>
-        <h1>Choose your plan</h1>
+        <h4>Choose your plan</h4>
       </div>
       <div id="pricing-table">
       </div>            
