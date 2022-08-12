@@ -5,7 +5,7 @@ import CountDownTimer from './countdownTimer/CountDownTimer';
 export const SaaSProduct = () => {  
   const [countDown, setCountDown] = useState(0);
   const [countDownLabel, setCountDownLabel] = useState(0);
-  const [inProgress, setInProgress] = useState(true);
+  const [inProgress, setInProgress] = useState(false);
   useEffect(() => {
     console.log("Found new time = " + countDown)
   }, [countDown]);
@@ -15,7 +15,7 @@ export const SaaSProduct = () => {
     const dateTimeAfterThreeDays = NOW_IN_MS + THREE_DAYS_IN_MS;
     setCountDown(dateTimeAfterThreeDays)
     setCountDownLabel(label)
-    setInProgress(true)
+    setInProgress(!inProgress)
     
   }
   const resetCountDown = () => {
@@ -67,7 +67,7 @@ export const SaaSProduct = () => {
             <button onClick={() => {
               resetCountDown()
             }}>
-              Rest
+              Start Again
             </button>
           </div>
           <div hidden={!inProgress}>
