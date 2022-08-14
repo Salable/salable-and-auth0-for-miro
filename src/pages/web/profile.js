@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import { getLicensesForPurchaser } from "../lib/salable/license";
+import { getLicensesForPurchaser } from "../../lib/salable/license";
 
 
 const Profile = (props) => {  
@@ -48,7 +48,7 @@ const RenderLicenses = () => {
       <h3>Licenses</h3> 
       {RenderLicenses()}
       </div>
-      <div>
+      <div className="info">
       {props.email} has the right to use the following capabilities: {props.capabilities}
       </div>
 

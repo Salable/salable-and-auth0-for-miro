@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
         <h1>
         <a href="/" rel="noreferrer">
                     <button className="menuitem" >
-                      Idea Generator
+                      Pomato
                     </button>
                   </a>
         </h1>

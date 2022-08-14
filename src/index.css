@@ -11,4 +11,8 @@ body {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
-  
+  .info {
+    border: 2px solid red;
+    padding: 5px;
+    margin: 10px;
+  }

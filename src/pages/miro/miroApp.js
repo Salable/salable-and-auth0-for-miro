@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react"; 
-import {BuyNow} from "../components/buyNow"
-import { SaaSProduct } from "./app";
+import {BuyNow} from "../../components/buyNow"
+import { SaaSProduct } from "../../components/app";
 
 
 const MiroApp = (props) => {  
@@ -46,7 +46,7 @@ const RenderHomeContent = () => {
       </div>
       <hr />
       <div>
-      {props.email} has the right to use the following capabilities: {props.capabilities}
+      {props.email ? props.email : "Anonymous"} has the right to use the following capabilities: {props.capabilities}
       </div>
 
     </>
