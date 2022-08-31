@@ -2,6 +2,7 @@ import React from "react";
 import { useAuth0 } from "@auth0/auth0-react"; 
 import {BuyNow} from "../../components/buyNow"
 import { SaaSProduct } from "../../components/app";
+import "./Miro.css"
 
 
 const MiroApp = (props) => {  
@@ -9,10 +10,17 @@ const MiroApp = (props) => {
 
 
 const RenderHomeContent = () => {
-  if (props.isLoading) {
-    return <></>;
-  }
-  if (props.capabilities === null) return <></>
+  console.dir(props.capabilities)
+  if (props.isLoading) return <></>
+  else if (props.capabilities === null && props.email !== null && !props.isLoading) return <></>
+  else if (props.capabilities === null && props.email == null && !props.isLoading) return <>
+  <div className="cs1 ce12">
+        <button className="button button-primary" type="button" onClick={() => {
+                loginWithPopup().then(token => {
+                  console.log("login successful!")
+                });
+              }}>Log in with Pomato</button>
+      </div></>
   else if (!props.isLoading && props.isAuthenticated && props.capabilities !== null) {          
     
     if (props.capabilities.includes("idea-generator-miro")) {
@@ -20,28 +28,32 @@ const RenderHomeContent = () => {
         <SaaSProduct />
      </>
     }
-    else return <><BuyNow/></>
+    else return <><BuyNow/></>;
     
-  }
-  return <>
+  } else {
+    return <>
     <div>
       <h1>Welcome to Idea Generator!</h1>
       <p>Use this product to generate ideas!</p>
       <hr></hr>
       <h3>Get started</h3> 
       <p>Login now to get started</p>     
-      <button className="menuitem" onClick={() => {
-                  loginWithPopup().then(token => {
-                    console.log("login successful!")
-                  });
-                }}>Login</button>
+      <div className="cs1 ce12">
+        <button className="button button-primary" type="button" onClick={() => {
+                loginWithPopup().then(token => {
+                  console.log("login successful!")
+                });
+              }}>Log in with Pomato</button>
+      </div>
     </div>
 
   </>
+  }
+  
 };
   return (
     <>    
-      <div>
+      <div className="grid">
       {RenderHomeContent()}
       </div>
       <hr />

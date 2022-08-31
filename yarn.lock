@@ -2167,6 +2167,11 @@
   dependencies:
     "@octokit/openapi-types" "^11.2.0"
 
+"@planetscale/database@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@planetscale/database/-/database-1.0.1.tgz#1d99accea8d53e8b36549a74a1e9e3aca2a6be82"
+  integrity sha512-bAC2FqmhWu5hGiBtH4txAxwO6XeLCUzNr3ubMSso3AfCp5wp7Pw375ujtwZWpjCvpUhelu/X9em6bszPGTk5Bw==
+
 "@pmmmwh/react-refresh-webpack-plugin@0.4.3":
   version "0.4.3"
   resolved "https://registry.npmjs.org/@pmmmwh/react-refresh-webpack-plugin/-/react-refresh-webpack-plugin-0.4.3.tgz"
@@ -7106,7 +7111,7 @@ fastq@^1.6.0:
 
 faunadb@^4.6.0:
   version "4.6.0"
-  resolved "https://registry.npmjs.org/faunadb/-/faunadb-4.6.0.tgz"
+  resolved "https://registry.yarnpkg.com/faunadb/-/faunadb-4.6.0.tgz#86ffe4a2b9e6efdf29103d61623edfbaba53dd60"
   integrity sha512-lBCS9wOLIdoeQmhzFvNAXM9B4T3Ptv2HUf0RrPsC2LA1zPtTQFBtdhH7fvTlwRyUawIKDjs1wn5pk2o8g0Cylg==
   dependencies:
     base64-js "^1.2.0"
@@ -10813,6 +10818,11 @@ minizlib@^2.1.1:
   dependencies:
     minipass "^3.0.0"
     yallist "^4.0.0"
+
+mirotone@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/mirotone/-/mirotone-4.0.1.tgz#2dac2bdd5471502ba493d0c0388beb19e2107389"
+  integrity sha512-lWpQKWIZiN3vdZFLw1Rn8z8Z+gmb42LZR5JsGr8GoT+8mGgBkBggFfFPMD9oqEbQc4Tkjfl5esIyaYQqiqfJOQ==
 
 mississippi@^3.0.0:
   version "3.0.0"

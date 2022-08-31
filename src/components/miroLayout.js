@@ -1,18 +1,11 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 
-const Layout = ({ children }) => {
+const MiroLayout = ({ children }) => {
   const { isLoading, isAuthenticated, logout, loginWithPopup, user } = useAuth0();
   return (
     <>
       <header>
-        <h1>
-        <a href="/" rel="noreferrer">
-                    <button className="menuitem" >
-                      Pomato
-                    </button>
-                  </a>
-        </h1>
         <nav>
           <ul>
               {!isLoading && isAuthenticated && (
@@ -52,4 +45,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default MiroLayout;

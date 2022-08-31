@@ -1,0 +1,16 @@
+[[edge_functions]]
+path = "/edge"
+function = "data_json"
+
+
+
+# The following redirect is intended for use with most SPA's that handles routing internally
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+
+[dev]
+publish = "src"
+functions = "./netlify/functions"

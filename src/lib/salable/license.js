@@ -2,7 +2,7 @@ const getLicence = async (email) => {
     // const user = await miro.board.getUserInfo();
 
     const productUuid = process.env.REACT_APP_SALABLE_PRODUCT_UUID
-    const url = `https://api.salable.org/licenses/check?productUuid=${productUuid}&granteeIds=[${email}]`
+    const url = `https://api.salable.app/licenses/check?productUuid=${productUuid}&granteeIds=[${email}]`
     if (productUuid) {
         try {
             const response = await fetch(url, {
@@ -24,7 +24,7 @@ const getLicence = async (email) => {
   export const getLicensesForPurchaser = async (email) => {
     // const user = await miro.board.getUserInfo();
     const productUuid = process.env.REACT_APP_SALABLE_PRODUCT_UUID
-    const url = `https://api.salable.org/licenses/purchaser?productUuid=${productUuid}&purchaser=${email}`
+    const url = `https://api.salable.app/licenses/purchaser?productUuid=${productUuid}&purchaser=${email}`
     try {
         const response = await fetch(url, {
             method: 'GET',

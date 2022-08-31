@@ -13,26 +13,29 @@ const ExpiredNotice = () => {
 const ShowCounter = ({ days, hours, minutes, seconds }) => {
   return (
     <div className="show-counter">
-      <a
-        href="https://tapasadhikary.com"
-        target="_blank"
-        rel="noopener noreferrer"
+      <div
         className="countdown-link"
       >
         <DateTimeDisplay value={minutes} type={"Mins"} isDanger={false} />
         <p>:</p>
         <DateTimeDisplay value={seconds} type={"Seconds"} isDanger={false} />
-      </a>
+      </div>
     </div>
   );
 };
 
 const CountDownTimer = ({ targetDate, textLabel }) => {
   const [days, hours, minutes, seconds] = useCountDown(targetDate);
-
-  if (days + hours + minutes + seconds <= 0) {
+  if (targetDate === 0) {
+    console.log(days + hours + minutes + seconds)
+    return <></>;
+  } 
+  else if (days + hours + minutes + seconds < 0) {
+    console.log(days + hours + minutes + seconds)
+    
     return <ExpiredNotice />;
   } else {
+    console.log(days + hours + minutes + seconds)
     return (
       <div>
         <h3><center>{textLabel}</center></h3>

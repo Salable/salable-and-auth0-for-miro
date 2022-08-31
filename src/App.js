@@ -30,14 +30,14 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home email={email} capabilities={capabilities} isLoading={isLoading} isAuthenticated={isAuthenticated}/>} />
-          <Route path="/miro-init" element={<MiroInit />} />
-          <Route path="/miro-app" element={<MiroApp email={email} capabilities={capabilities} isLoading={isLoading} isAuthenticated={isAuthenticated}/>} />
-          <Route path="/profile" element={<Profile email={email} capabilities={capabilities} isLoading={isLoading} isAuthenticated={isAuthenticated}/>} />
+        <Layout>
+        <Routes>          
+            <Route path="/miro-init" element={<MiroInit />} />
+            <Route path="/miro-app" element={<MiroApp email={email} capabilities={capabilities} isLoading={isLoading} isAuthenticated={isAuthenticated}/>} />
+            <Route path="/" element={<Home email={email} capabilities={capabilities} isLoading={isLoading} isAuthenticated={isAuthenticated}/>} />
+            <Route path="/profile" element={<Profile email={email} capabilities={capabilities} isLoading={isLoading} isAuthenticated={isAuthenticated}/>} />                                
         </Routes>
-      </Layout>
+        </Layout>
     </BrowserRouter>
   );
 };
